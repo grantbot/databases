@@ -1,4 +1,6 @@
 ### node etc ###
+/client/env/config.js
+/client/.DS_store
 
 # Logs
 logs
