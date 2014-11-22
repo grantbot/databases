@@ -9,14 +9,16 @@ module.exports = {
     get: function (req, res) {
       console.log("GET REQUEST TO /MESSAGES")
       db.queryDb('SELECT * FROM messages');
-      //Grab the db connection object
-      //Query db, via handler
+      //res.end, send headers and 200 code
     },
 
     post: function (req, res) {
-      req.on('data', function(data) {
-        console.log(data)
-      })
+      console.log("POST REQUEST TO /MESSAGES")
+
+      console.log("DATA IS ", req.body);
+      db.writeDb(req.body);
+
+
     }
   },
 

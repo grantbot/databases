@@ -20,6 +20,12 @@ exports.queryDb = function(queryString) {
   });
 };
 
+exports.writeDb = function(msgObj) {
+  dbConnection.query('INSERT INTO messages SET ?', msgObj, function(err, result) {
+   if (err) throw err;
+   console.log('RESULT IS   ' + result);
+  });
+};
 
 
 //Write db helper functions

@@ -27,7 +27,8 @@ app = {
 
       var message = {
         username: app.username,
-        text: app.$text.val()
+        message: app.$text.val(),
+        room: 'greatest room'
       };
 
       app.$text.val('');
@@ -80,6 +81,7 @@ app = {
         data: JSON.stringify(message),
         contentType: 'application/json',
         success: function(json){
+          console.log("SENT MESSAGE")
           message.objectId = json.objectId;
           app.displayMessage(message);
         },
