@@ -13,16 +13,17 @@ exports.dbConnection = dbConnection = mysql.createConnection({
 
 dbConnection.connect();
 
-exports.queryDb = function(queryString) {
+exports.queryDb = function(queryString, callback) {
   dbConnection.query(queryString, function(err, rows) {
     if (err) throw err;
-    console.log(rows);
+    callback(rows);
   });
 };
 
-exports.writeDb = function(msgObj) {
+exports.writeDb = function(msgObj, callback) {
   dbConnection.query('INSERT INTO messages SET ?', msgObj, function(err, result) {
    if (err) throw err;
+   callback(result);
    console.log('RESULT IS   ' + result);
   });
 };

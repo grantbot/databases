@@ -9,7 +9,11 @@ var headers = {
 exports.sendResponse = function(response, data, statusCode){
   statusCode = statusCode || 200;
   response.writeHead(statusCode, headers);
-  response.end(JSON.stringify(data));
+  if (statusCode === 201) {
+    response.end();
+  } else {
+    response.end(JSON.stringify(data));
+  }
 };
 
 exports.collectData = function(request, callback){
