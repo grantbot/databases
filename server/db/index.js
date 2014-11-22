@@ -24,11 +24,7 @@ exports.writeDb = function(msgObj, callback) {
   dbConnection.query('INSERT INTO messages SET ?', msgObj, function(err, result) {
    if (err) throw err;
    callback(result);
+
    console.log('RESULT IS   ' + result);
   });
 };
-
-
-//Write db helper functions
-//Write(table)
-//Read()

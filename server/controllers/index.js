@@ -9,11 +9,10 @@ module.exports = {
   messages: {
     get: function (req, res) {
       console.log("GET REQUEST TO /MESSAGES")
+
       db.queryDb('SELECT * FROM messages', function(data) {
-        // console.log('retrieved from db  ' + data);
         utils.sendResponse(res, data, 200);
       });
-      //res.end, send headers and 200 code
 
     },
 
@@ -24,8 +23,6 @@ module.exports = {
       db.writeDb(req.body, function(data) {
         utils.sendResponse(res, data, 201);
       });
-      //send response
-
 
     }
   },

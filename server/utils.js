@@ -9,6 +9,8 @@ var headers = {
 exports.sendResponse = function(response, data, statusCode){
   statusCode = statusCode || 200;
   response.writeHead(statusCode, headers);
+
+  //Don't wana send data if 201, because client will double-render it
   if (statusCode === 201) {
     response.end();
   } else {
@@ -16,12 +18,12 @@ exports.sendResponse = function(response, data, statusCode){
   }
 };
 
-exports.collectData = function(request, callback){
-  var data = "";
-  request.on('data', function(chunk){
-    data += chunk;
-  });
-  request.on('end', function(){
-    callback(JSON.parse(data));
-  });
-};
+// exports.collectData = function(request, callback){
+//   var data = "";
+//   request.on('data', function(chunk){
+//     data += chunk;
+//   });
+//   request.on('end', function(){
+//     callback(JSON.parse(data));
+//   });
+// };
