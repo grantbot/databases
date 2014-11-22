@@ -1,12 +1,23 @@
 var models = require('../models');
 var bluebird = require('bluebird');
+var db = require('../db');
 
 
 
 module.exports = {
   messages: {
-    get: function (req, res) {}, // a function which handles a get request for all messages
-    post: function (req, res) {} // a function which handles posting a message to the database
+    get: function (req, res) {
+      console.log("GET REQUEST TO /MESSAGES")
+      db.queryDb('SELECT * FROM messages');
+      //Grab the db connection object
+      //Query db, via handler
+    },
+
+    post: function (req, res) {
+      req.on('data', function(data) {
+        console.log(data)
+      })
+    }
   },
 
   users: {
