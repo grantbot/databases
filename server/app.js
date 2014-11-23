@@ -16,6 +16,7 @@ app.set("port", 3000);
 
 // Logging and parsing
 app.use(morgan('dev'));
+//Parsing json via middleware. Lets you call req.body
 app.use(parser.json());
 
 // Set up our routes

@@ -28,7 +28,7 @@ app = {
       var message = {
         username: app.username,
         message: app.$text.val(),
-        room: 'greatest room'
+        roomname: 'greatest room'
       };
 
       app.$text.val('');
@@ -65,8 +65,7 @@ app = {
         // data: { order: '-createdAt' },
         contentType: 'application/json',
         success: function(jsonArray){
-          //CHANGE DIS
-          console.log(jsonArray);
+          console.log("RETURNED DATA ", jsonArray);
           app.displayMessages(jsonArray);
         },
         complete: function(){
@@ -85,7 +84,7 @@ app = {
         success: function(json){
           console.log("SENT MESSAGE")
           message.id = json.id;
-          app.displayMessage(message);
+          // app.displayMessage(message);
         },
         complete: function(){
           app.stopSpinner();
